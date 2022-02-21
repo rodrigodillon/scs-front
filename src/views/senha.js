@@ -1,18 +1,18 @@
 import React from "react";
 import { Stack , Card , Button} from 'react-bootstrap';
 
-import UsuarioService from "../app/service/usuarioService";
+import SenhaService from "../app/service/senhaService";
 
 
-class Usuario extends React.Component {
+class Senha extends React.Component {
 
 
     constructor(){
         super();
-        this.service = new UsuarioService();
+        this.service = new SenhaService();
         this.state = {
-            senha : 0,
-            suaNovaSenha : 0
+            senhaAtual : 0,
+            suaSenha : 0
             
         }
     }
@@ -35,7 +35,7 @@ class Usuario extends React.Component {
     tick () {
         this.service.senhaAtual().then((resp)=>{
             this.setState(() => {
-                return {senha: resp.data.senha}
+                return {senhaAtual: resp.data.senha}
             })
 
         })
@@ -43,9 +43,8 @@ class Usuario extends React.Component {
 
     suaSenha = () => {
             this.setState(() => {
-                return {suaNovaSenha: localStorage.getItem('Senha')}
+                return {suaSenha: localStorage.getItem('Senha')}
             })
-            console.log("novo status" + this.state.suaNovaSenha)
     }
 
     render() {
@@ -65,7 +64,7 @@ class Usuario extends React.Component {
                         >
                             <Card.Header>SENHA ATUAL:</Card.Header>
                             <Card.Body>
-                                <Card.Title >{this.state.senha} </Card.Title>
+                                <Card.Title >{this.state.senhaAtual} </Card.Title>
                             </Card.Body>
                         </Card>
                         <Card
@@ -76,10 +75,9 @@ class Usuario extends React.Component {
                         >
                             <Card.Header>SUA SENHA:</Card.Header>
                             <Card.Body>
-                                <Card.Title> {this.state.suaNovaSenha} </Card.Title>
+                                <Card.Title> {this.state.suaSenha} </Card.Title>
                             </Card.Body>
                         </Card>
-                        <Button onClick={this.suaSenha} variant="success">NORMAL</Button>
                     </Stack>
                 </div>
             </>
@@ -89,4 +87,4 @@ class Usuario extends React.Component {
 
 }
 
-export default Usuario;
+export default Senha;

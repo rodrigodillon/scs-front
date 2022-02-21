@@ -1,9 +1,9 @@
 import ApiService from "../apiservice";
 
-class UsuarioService extends ApiService {
+class SenhaService extends ApiService {
 
     constructor () {
-        super('/api/senhas/');
+        super('/scs-backend/api/senhas/');
     }
 
 
@@ -23,4 +23,4 @@ class UsuarioService extends ApiService {
 
 }
 
-export default UsuarioService;
+export default SenhaService;

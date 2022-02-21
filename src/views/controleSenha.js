@@ -1,16 +1,16 @@
 import React from "react";
 import { Stack, Card, Button, Container, Row, Col } from 'react-bootstrap';
 
-import GerenteService from "../app/service/gerenteService";
+import ControleSenhaService from "../app/service/controleSenhaService";
 
 
-class Gerente extends React.Component {
+class ControleSenha extends React.Component {
 
     constructor(){
         super();
-        this.service = new GerenteService();
+        this.service = new ControleSenhaService();
         this.state = {
-            senha : 0
+            senhaAtual : 0
         }
     }
 
@@ -27,7 +27,7 @@ class Gerente extends React.Component {
             () => this.tick(), 500
         )
         setTimeout(()=> {
-            this.senha()
+            this.senhaAtual()
         },500)
     }
 
@@ -38,7 +38,7 @@ class Gerente extends React.Component {
     tick () {
         this.service.senhaAtual().then((resp)=>{
             this.setState(() => {
-                return {senha: resp.data.senha}
+                return {senhaAtual: resp.data.senha}
             })
 
         })
@@ -62,7 +62,7 @@ class Gerente extends React.Component {
                         >
                             <Card.Header>SENHA ATUAL:</Card.Header>
                             <Card.Body>
-                                <Card.Title> {this.state.senha} </Card.Title>
+                                <Card.Title> {this.state.senhaAtual} </Card.Title>
                             </Card.Body>
                         </Card>
                         <Container style={{
@@ -88,4 +88,4 @@ class Gerente extends React.Component {
 
 }
 
-export default Gerente;
+export default ControleSenha;

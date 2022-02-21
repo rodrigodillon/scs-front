@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# SCS - Sistema de controle de senhas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Front-end para controle de senhas utilizado por "Usuarios" onde tem a possibilidade de selecionar "Preferencial" ou "Normal",
+sendo chamadas pelo "Gerente".
 
-## Available Scripts
+Todas as funcionalidades serão acessadas utilizando Axios para realizar as requisições utilizando o protocolo REST.
 
-In the project directory, you can run:
+# Requisitos
 
-### `npm start`
+* Node
+* Scs - backend (https://github.com/rodrigodillon/scs)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+As depedencias do projeto se encontram no package.json , por tanto um simples `'npm install'` na pasta do projeto ira realizar a instalação das mesmas.
 
-### `npm test`
+Após concluir a instalação , utilizar `'npm start'` para subir a aplicação na URL `http://localhost:3000/`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Utilização
 
-### `npm run build`
+## "Usuario"
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Na URL `http://localhost:3000/` aparecera dois botões para a escolha da sua senha , "PREFERECIAL" ou "NORMAL".
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Após a escolha será redirecionado para `http://localhost:3000/senhas` , aonde será apresentado a "SENHA ATUAL" e a "SUA SENHA".
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## "Gerente"
 
-### `npm run eject`
+Na URL `http://localhost:3000/controleSenha` aparecera um marcador indicando a senha atual e dois botões.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+"PROXIMO" Aonde será possível realizar a chamada da próxima senha.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+"REINICIAR" Aonde será possível reiniciar a contagem de senhas após a última senha retirada.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`Exemplo de "REINICIAR":`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Foram retiradas 20 senhas , porem a senha atual ainda é a número 12
 
-## Learn More
+A próxima senha retirada será número 01, porem será feita a chamada das 8 senhas restantes antes das demais.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Build
 
-### Code Splitting
+Para gerar o build basta rodar o comando `'npm run build'` aonde será gerado uma pasta com todos os arquivos prontos para deploy.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

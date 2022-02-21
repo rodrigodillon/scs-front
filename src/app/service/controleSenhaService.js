@@ -1,9 +1,9 @@
 import ApiService from "../apiservice";
 
-class GerenteService extends ApiService {
+class ControleSenhaService extends ApiService {
 
     constructor () {
-        super('/api/senhas/');
+        super('/scs-backend/api/senhas/');
     }
 
     chamarProximaSenha() {
@@ -19,4 +19,4 @@ class GerenteService extends ApiService {
     }
 }
 
-export default GerenteService;
+export default ControleSenhaService;
