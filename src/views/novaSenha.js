@@ -1,8 +1,9 @@
 import React from "react";
 import { Button,Stack } from 'react-bootstrap';
 
-import Redirect from "../app/service/redirect";
 import UsuarioService from "../app/service/usuarioService";
+
+import {withRouter} from './withRouter'
 
 
 class NovaSenha extends React.Component {
@@ -12,25 +13,31 @@ class NovaSenha extends React.Component {
     constructor(){
         super();
         this.service = new UsuarioService();
+        this.novaSenhaNormal = this.novaSenhaNormal.bind(this);
+    }
+    
+    //navigate = useNavigate();
+    
+    novaSenhaPreferencial = async () => {
+        
+        const response = await this.service.pedirSenhaPreferencial()
+        const {senha} = response.data
+        console.log(response.data)
+        localStorage.setItem('Senha', senha);
+        //if(dataHoraSenhaAtendimento != null) {
+          //  setTimeout(()=> {
+            //    localStorage.clear()
+            //},30000)
+        //}
     }
 
     
-    novaSenhaPreferencial = async () => {
-        const response = await this.service.pedirSenhaPreferencial()
-        const {senha, dataHoraSenhaAtendimento} = response.data
-        console.log(response.data)
-        localStorage.setItem('Senha', senha);
-        if(dataHoraSenhaAtendimento != null) {
-            setTimeout(()=> {
-                localStorage.clear()
-            },30000)
-        }
-    }
-
     novaSenhaNormal = async () => {
         const response = await this.service.pedirSenhaNormal()
         const {senha} = response.data
         localStorage.setItem('Senha', senha);
+        this.props.navigate('/senhas')
+        
     }
 
 
@@ -49,4 +56,4 @@ class NovaSenha extends React.Component {
     }
 }
 
-export default NovaSenha ;
+export default  withRouter(NovaSenha) ;
